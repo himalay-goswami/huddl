@@ -1,70 +1,63 @@
-# React + TypeScript + Vite
+# Huddl
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Huddl is a modern web application built with React, TypeScript, and Vite. It provides a clean, modular architecture for building scalable dashboards and internal tools. The project features a component-driven design, reusable UI elements, and a focus on developer experience.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ⚡️ Fast development with Vite and HMR
+- 🧩 Modular React components (sidebar, header, charts, tables, etc.)
+- 🎨 Custom UI library for consistent design
+- 📦 TypeScript for type safety
+- 🧹 ESLint and strict linting for code quality
+- 📁 Organized folder structure for scalability
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+/ (root)
+├── public/           # Static assets
+├── src/
+│   ├── app/          # App-specific modules (e.g., dashboard)
+│   ├── assets/       # Images and SVGs
+│   ├── components/   # Reusable UI components
+│   ├── hooks/        # Custom React hooks
+│   ├── lib/          # Utility functions
+│   └── pages/        # Top-level pages (Dashboard, Login, etc.)
+├── package.json      # Project metadata and scripts
+├── tsconfig*.json    # TypeScript configuration
+├── vite.config.ts    # Vite configuration
+└── ...
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. **Install dependencies:**
+   ```sh
+   npm install
+   ```
+2. **Start the development server:**
+   ```sh
+   npm run dev
+   ```
+3. **Open your browser:**
+   Visit [http://localhost:5173](http://localhost:5173) to view the app.
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-# huddl
+## Linting & Code Quality
+
+- ESLint is configured for strict type-aware linting.
+- To run lint checks:
+  ```sh
+  npm run lint
+  ```
+- See `eslint.config.js` for custom rules and recommended plugins.
+
+## Contributing
+
+1. Fork the repo and create a new branch.
+2. Make your changes and add tests if needed.
+3. Run `npm run lint` and `npm run build` to ensure code quality.
+4. Submit a pull request.
+
+## License
+
+MIT
