@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { ScrollArea } from '@/components/ui/scroll-area';
-import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
-import { AppSidebar } from '@/components/app-sidebar';
-import { SiteHeader } from '@/components/site-header';
+import React, { useState, useEffect } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/app-sidebar";
+import SiteHeader from "@/components/site-header";
+import CliWindow from "@/components/CliWindow";
 
 interface Post {
   id: string;
@@ -17,14 +18,25 @@ interface Post {
 
 const Timeline: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);
-  const [newPost, setNewPost] = useState('');
+  const [newPost, setNewPost] = useState("");
+        const [cliOpen, setCliOpen] = useState(false);
 
   useEffect(() => {
     // Simulated API call for posts
     const fetchPosts = async () => {
       const mockPosts: Post[] = [
-        { id: '1', user: 'dev1', content: 'Just shipped my first PR! 🚀', timestamp: '2025-07-11T10:00:00Z' },
-        { id: '2', user: 'dev2', content: 'Debugging is my cardio 💪', timestamp: '2025-07-11T09:30:00Z' },
+        {
+          id: "1",
+          user: "dev1",
+          content: "Just shipped my first PR! 🚀",
+          timestamp: "2025-07-11T10:00:00Z",
+        },
+        {
+          id: "2",
+          user: "dev2",
+          content: "Debugging is my cardio 💪",
+          timestamp: "2025-07-11T09:30:00Z",
+        },
       ];
       setPosts(mockPosts);
     };
@@ -37,66 +49,69 @@ const Timeline: React.FC = () => {
     }
     const post: Post = {
       id: Math.random().toString(),
-      user: 'currentUser',
+      user: "currentUser",
       content: newPost,
       timestamp: new Date().toISOString(),
     };
     setPosts([post, ...posts]);
-    setNewPost('');
+    setNewPost("");
   };
 
   return (
-
     <>
-    <SidebarProvider
-      style={
-        {
-          "--sidebar-width": "calc(var(--spacing) * 72)",
-          "--header-height": "calc(var(--spacing) * 12)",
-        } as React.CSSProperties
-      }
-    >
-
-     <AppSidebar variant="inset" />
-      <SidebarInset>
-        <SiteHeader />
-        <div className="container mx-auto p-4">
-      <Card className="mb-4">
-        <CardHeader>
-          <CardTitle>Create a Post</CardTitle>
-        </CardHeader>
-        <CardContent className="flex gap-2">
-          <Input
-            value={newPost}
-            onChange={(e) => setNewPost(e.target.value)}
-            placeholder="What's on your mind?"
-            className="flex-1"
-          />
-          <Button onClick={handlePost}>Post</Button>
-        </CardContent>
-      </Card>
-      <ScrollArea className="h-[600px]">
-        {posts.map((post) => (
-          <Card key={post.id} className="mb-4">
-            <CardContent className="flex gap-4 pt-4">
-              <Avatar>
-                <AvatarImage src={`https://avatar.vercel.sh/${post.user}`} />
-                <AvatarFallback>{post.user[0].toUpperCase()}</AvatarFallback>
-              </Avatar>
-              <div>
-                <p className="font-semibold">{post.user}</p>
-                <p className="text-sm text-muted-foreground">{new Date(post.timestamp).toLocaleString()}</p>
-                <p className="mt-2">{post.content}</p>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </ScrollArea>
-    </div>
-      </SidebarInset>
-    </SidebarProvider>
-
-    
+      <SidebarProvider
+        style={
+          {
+            "--sidebar-width": "calc(var(--spacing) * 72)",
+            "--header-height": "calc(var(--spacing) * 12)",
+          } as React.CSSProperties
+        }
+      >
+        <AppSidebar variant="inset" />
+        <SidebarInset>
+          <SiteHeader cliOpen={cliOpen} setCliOpen={setCliOpen} />
+          {cliOpen && <CliWindow onExit={() => setCliOpen(false)} />}
+          <div className="container mx-auto p-4">
+            <Card className="mb-4">
+              <CardHeader>
+                <CardTitle>Create a Post</CardTitle>
+              </CardHeader>
+              <CardContent className="flex gap-2">
+                <Input
+                  value={newPost}
+                  onChange={(e) => setNewPost(e.target.value)}
+                  placeholder="What's on your mind?"
+                  className="flex-1"
+                />
+                <Button onClick={handlePost}>Post</Button>
+              </CardContent>
+            </Card>
+            <ScrollArea className="h-[600px]">
+              {posts.map((post) => (
+                <Card key={post.id} className="mb-4">
+                  <CardContent className="flex gap-4 pt-4">
+                    <Avatar>
+                      <AvatarImage
+                        src={`https://avatar.vercel.sh/${post.user}`}
+                      />
+                      <AvatarFallback>
+                        {post.user[0].toUpperCase()}
+                      </AvatarFallback>
+                    </Avatar>
+                    <div>
+                      <p className="font-semibold">{post.user}</p>
+                      <p className="text-sm text-muted-foreground">
+                        {new Date(post.timestamp).toLocaleString()}
+                      </p>
+                      <p className="mt-2">{post.content}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </ScrollArea>
+          </div>
+        </SidebarInset>
+      </SidebarProvider>
     </>
   );
 };

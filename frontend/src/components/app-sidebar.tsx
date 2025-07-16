@@ -1,14 +1,12 @@
+import logo from "@/assets/logo.jpg";
 import * as React from "react"
 import {
   IconCamera,
   IconChartBar,
-  IconDashboard,
   IconDatabase,
   IconFileAi,
   IconFileDescription,
-  IconFileWord,
   IconHelp,
-  IconInnerShadowTop,
   IconListDetails,
   IconReport,
   IconSearch,
@@ -16,7 +14,6 @@ import {
   IconUsers,
 } from "@tabler/icons-react"
 
-import { NavDocuments } from "@/components/nav-documents"
 import { NavMain } from "@/components/nav-main"
 import { NavSecondary } from "@/components/nav-secondary"
 import { NavUser } from "@/components/nav-user"
@@ -25,9 +22,6 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
 } from "@/components/ui/sidebar"
 
 const data = {
@@ -38,34 +32,23 @@ const data = {
   },
   navMain: [
     {
-      title: "Dashboard",
-      url: "/dashboard",
-      icon: IconDashboard,
+      category: "Workspace",
+      items: [
+        { title: "Timeline", url: "/timeline", icon: IconChartBar },
+        { title: "Journal", url: "/journal", icon: IconFileDescription },
+        { title: "Posts", url: "/posts", icon: IconFileAi },
+        { title: "Meetings", url: "/meetings", icon: IconUsers },
+        { title: "Tickets", url: "/tickets", icon: IconListDetails },
+        { title: "Pull Requests", url: "/pull-requests", icon: IconReport },
+      ],
     },
     {
-      title: "Microblog",
-      url: "/microblog",
-      icon: IconFileAi,
-    },
-    {
-      title: "Tickets",
-      url: "/tickets",
-      icon: IconListDetails,
-    },
-    {
-      title: "Pull Requests",
-      url: "/pull-requests",
-      icon: IconReport,
-    },
-    {
-      title: "Timeline",
-      url: "/timeline",
-      icon: IconChartBar,
-    },
-    {
-      title: "Meetings",
-      url: "/meetings",
-      icon: IconUsers,
+      category: "Knowledge",
+      items: [
+        { title: "Data Library", url: "/library", icon: IconDatabase },
+        { title: "Reports", url: "/reports", icon: IconReport },
+        { title: "Prompts", url: "/prompts", icon: IconFileAi },
+      ],
     },
   ],
   navClouds: [
@@ -133,46 +116,26 @@ const data = {
       icon: IconSearch,
     },
   ],
-  documents: [
-    {
-      name: "Data Library",
-      url: "#",
-      icon: IconDatabase,
-    },
-    {
-      name: "Reports",
-      url: "#",
-      icon: IconReport,
-    },
-    {
-      name: "Word Assistant",
-      url: "#",
-      icon: IconFileWord,
-    },
-  ],
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="offcanvas" {...props}>
       <SidebarHeader>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton
-              asChild
-              className="data-[slot=sidebar-menu-button]:!p-1.5"
-            >
-              <a href="#">
-                <IconInnerShadowTop className="!size-5" />
-                <span className="text-base font-semibold">Huddl</span>
-              </a>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
+        <div className="flex items-center gap-3 px-4 py-6">
+          <img src={logo} alt="Huddl Logo" className="h-10 w-10 object-contain rounded" />
+          <span className="text-2xl font-bold">Huddl</span>
+        </div>
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
-        <NavDocuments items={data.documents} />
+        {data.navMain.map((group) => (
+          <div key={group.category} className="mb-4">
+            <div className="px-4 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">
+              {group.category}
+            </div>
+            <NavMain items={group.items} />
+          </div>
+        ))}
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
