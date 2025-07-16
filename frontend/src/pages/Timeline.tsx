@@ -4,6 +4,9 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
+import { AppSidebar } from '@/components/app-sidebar';
+import { SiteHeader } from '@/components/site-header';
 
 interface Post {
   id: string;
@@ -43,7 +46,21 @@ const Timeline: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
+
+    <>
+    <SidebarProvider
+      style={
+        {
+          "--sidebar-width": "calc(var(--spacing) * 72)",
+          "--header-height": "calc(var(--spacing) * 12)",
+        } as React.CSSProperties
+      }
+    >
+
+     <AppSidebar variant="inset" />
+      <SidebarInset>
+        <SiteHeader />
+        <div className="container mx-auto p-4">
       <Card className="mb-4">
         <CardHeader>
           <CardTitle>Create a Post</CardTitle>
@@ -76,6 +93,11 @@ const Timeline: React.FC = () => {
         ))}
       </ScrollArea>
     </div>
+      </SidebarInset>
+    </SidebarProvider>
+
+    
+    </>
   );
 };
 

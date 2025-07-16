@@ -1,5 +1,5 @@
 import { SeparatorVertical } from "lucide-react"
-import placeholder from "@/assets/placeholder.svg"
+import banner from "@/assets/banner.png"
 import { LoginForm } from "@/components/login-form"
 
 export default function LoginPage() {
@@ -23,7 +23,7 @@ export default function LoginPage() {
       </div>
       <div className="bg-muted relative hidden lg:block">
         <img
-          src={placeholder}
+          src={banner}
           alt="Image"
           className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
         />

@@ -1,0 +1,41 @@
+# Java/Maven
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# OS generated files
+Thumbs.db
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Build
+build/
+
+# Other
+*.swp
+*.swo
+
+# Environment
+.env
+
+# Maven Wrapper
+mvnw.cmd
+mvnw
+
