@@ -9,7 +9,7 @@ const Landing: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col font-sans text-gray-800">
       <PublicHeader />
-      <Hero onCliToggle={toggleCli} cliOpen={cliOpen} />
+      <Hero onCliToggle={toggleCli} />
       {cliOpen && (
         <div className="w-full max-w-2xl h-[480px] flex items-start justify-start mx-auto mb-8">
           <CliWindow onExit={closeCli} />

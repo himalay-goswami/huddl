@@ -2,11 +2,14 @@ import { useNavigate } from "react-router-dom";
 import HeroCards from "./HeroCards";
 import { Button } from "./ui/button";
 
-const Hero = () => {
+type HeroProps = {
+  onCliToggle?: () => void;
+};
+
+const Hero = ({ onCliToggle }: HeroProps) => {
   const navigate = useNavigate();
   return (
     <section className="w-full grid grid-cols-1 md:grid-cols-2 min-h-[500px] py-20 md:py-32 gap-10">
-      Left column: Huddl text, description, and buttons
       <div className="flex flex-col justify-center items-center md:items-start px-8 space-y-8">
         <div className="text-center md:text-left">
           <h1 className="text-5xl md:text-6xl font-bold mb-2">
@@ -27,7 +30,7 @@ const Hero = () => {
           </Button>
           <Button
             variant="outline"
-            onClick={() => navigate("/try")}
+            onClick={onCliToggle}
           >
             Give it a try!
           </Button>

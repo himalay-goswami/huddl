@@ -110,6 +110,13 @@ export default function CliWindow({ onExit }: CliWindowProps) {
       {/* Header */}
       <div className="flex justify-between items-center px-4 py-2 bg-[#222] border-b border-[#333]">
         <span className="text-white font-semibold">Huddl CLI</span>
+        <button
+          onClick={onExit}
+          className="ml-2 px-2 py-1 rounded text-gray-300 hover:text-white hover:bg-[#333] transition"
+          aria-label="Close CLI"
+        >
+          &#10005;
+        </button>
       </div>
       {/* Terminal */}
       <div ref={terminalRef} className="w-full h-full" style={{ minHeight: 0, textAlign: 'left' }} />

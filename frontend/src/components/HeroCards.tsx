@@ -39,11 +39,11 @@ export const HeroCards = () => {
             <CardDescription>{teamMember.username}</CardDescription>
           </div>
         </CardHeader>
-        <CardContent>This workspace is built for devs!</CardContent>
+        <CardContent>This tool is built for nerds!</CardContent>
       </Card>
 
       {/* Team */}
-      <Card className="absolute right-[20px] top-4 w-80 flex flex-col justify-center items-center drop-shadow-xl shadow-black/10 dark:shadow-white/10">
+      <Card className="absolute right-[120px] top-12 w-80 flex flex-col justify-center items-center drop-shadow-xl shadow-black/10 dark:shadow-white/10">
         <CardHeader className="mt-8 flex justify-center items-center pb-2">
           <img
             src={teamMember.avatar}
@@ -57,7 +57,7 @@ export const HeroCards = () => {
         </CardHeader>
         <CardContent className="text-center pb-2">
           <p>
-            Building Huddl to help developers track, journal, and automate their workflow.
+            Track your work, run commands, and search your developer journey—all in one calm, fast, and personal workspace.
           </p>
         </CardContent>
         <CardFooter>
@@ -117,7 +117,7 @@ export const HeroCards = () => {
       </Card>
 
       {/* Service */}
-      <Card className="absolute w-[350px] -right-[10px] bottom-[35px] drop-shadow-xl shadow-black/10 dark:shadow-white/10">
+      <Card className="absolute w-[350px] left-[320px] bottom-[60px] drop-shadow-xl shadow-black/10 dark:shadow-white/10">
         <CardHeader className="space-y-1 flex md:flex-row justify-start items-start gap-4">
           <div className="flex gap-2">
             <Lightbulb />
