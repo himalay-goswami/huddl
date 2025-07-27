@@ -1,6 +1,6 @@
 spring:
   application:
-    name: post-service
+    name: huddl-user-service
   datasource:
     url: jdbc:postgresql://localhost:5432/HUDDL
     username: postgres
@@ -14,3 +14,8 @@ spring:
 
 server:
   port: 8081
+
+# JWT Configuration
+jwt:
+  secret: aHVkZGwtc2VjcmV0LWtleS1mb3Itand0LXRva2VuLWdlbmVyYXRpb24tYW5kLXZhbGlkYXRpb24tMjAyNA==
+  expiration: 86400000 # 24 hours in milliseconds

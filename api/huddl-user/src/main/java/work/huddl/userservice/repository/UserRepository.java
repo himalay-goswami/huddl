@@ -9,10 +9,18 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<User, String> {
 
 	/**
-	 * Retrieves the user ID associated with the given email.
+	 * Retrieves the user by email.
 	 *
 	 * @param email the email address of the user
-	 * @return the user ID if found, otherwise null
+	 * @return the user if found, otherwise empty optional
 	 */
-	Optional<User> getUserIdByEmail(String email);
+	Optional<User> findByEmail(String email);
+
+	/**
+	 * Checks if a user exists with the given email.
+	 *
+	 * @param email the email address to check
+	 * @return true if user exists, false otherwise
+	 */
+	boolean existsByEmail(String email);
 }

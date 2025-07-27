@@ -9,18 +9,14 @@ import work.huddl.userservice.util.IdGeneratorUtil;
 @Component
 public class UserEntityMapper {
 
-	private UserEntityMapper() {
-		// Private constructor to prevent instantiation
-	}
-
 	public User toEntity(UserRequestDTO userRequestDTO) {
 		User user = new User();
 		user.setId(IdGeneratorUtil.generateId());
 		user.setEmail(userRequestDTO.getEmail());
 		user.setName(userRequestDTO.getName());
 		user.setPassword(userRequestDTO.getPassword());
-        user.setWrittenLOC(0);
-        user.setWrittenLOC(0);
+		user.setWrittenLOC(0);
+		user.setStreak(0); // Fixed: was setting writtenLOC twice
 		return user;
 	}
 
@@ -29,7 +25,10 @@ public class UserEntityMapper {
 		response.setId(user.getId());
 		response.setEmail(user.getEmail());
 		response.setName(user.getName());
-        response.setStreakDays(user.getStreak());
+		response.setStreakDays(user.getStreak());
+		response.setWrittenLOC(user.getWrittenLOC());
+		response.setProfilePictureUrl(user.getProfilePictureUrl());
+		response.setBio(user.getBio());
 
 		return response;
 	}
