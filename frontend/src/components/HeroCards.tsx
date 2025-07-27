@@ -39,7 +39,9 @@ export const HeroCards = () => {
             <CardDescription>{teamMember.username}</CardDescription>
           </div>
         </CardHeader>
-        <CardContent>This tool is built for nerds!</CardContent>
+        <CardContent>
+          Huddl is your developer command center. Log, track, and navigate your work like Git—but for your entire journey.
+        </CardContent>
       </Card>
 
       {/* Team */}
@@ -129,6 +131,26 @@ export const HeroCards = () => {
               Switch between light and dark themes for your workspace.
             </CardDescription>
           </div>
+        </CardHeader>
+      </Card>
+
+      {/* Timeline */}
+      <Card className="absolute w-[340px] left-[180px] top-[270px] drop-shadow-xl shadow-black/10 dark:shadow-white/10">
+        <CardHeader className="space-y-1">
+          <CardTitle>Track everything like Git</CardTitle>
+          <CardDescription className="text-md mt-2">
+            Every update, idea, or log becomes a node in your workspace—searchable, editable, and connected.
+          </CardDescription>
+        </CardHeader>
+      </Card>
+
+      {/* CLI Node */}
+      <Card className="absolute w-[350px] right-[20px] bottom-[20px] drop-shadow-xl shadow-black/10 dark:shadow-white/10">
+        <CardHeader className="space-y-1">
+          <CardTitle>Command anything</CardTitle>
+          <CardDescription className="text-md mt-2">
+            Use the CLI to log actions, navigate your timeline, or run AI automations.
+          </CardDescription>
         </CardHeader>
       </Card>
     </div>

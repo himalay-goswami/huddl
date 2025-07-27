@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { Terminal } from "@xterm/xterm";
-import "@xterm/xterm/css/xterm.css";
+import { Terminal } from "xterm";
+import "xterm/css/xterm.css";
 import { CLI_COLORS } from "@/components/cli-colors";
 import { commandMap } from "@/components/cli-commands";
 
