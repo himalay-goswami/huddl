@@ -11,7 +11,7 @@ public class UserEntityMapper {
 
 	public User toEntity(UserRequestDTO userRequestDTO) {
 		User user = new User();
-		user.setId(IdGeneratorUtil.generateId());
+		// Remove custom ID generation - let JPA handle UUID generation
 		user.setEmail(userRequestDTO.getEmail());
 		user.setName(userRequestDTO.getName());
 		user.setPassword(userRequestDTO.getPassword());
