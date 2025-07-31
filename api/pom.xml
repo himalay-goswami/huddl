@@ -12,6 +12,7 @@
 
 	<modules>
 		<module>huddl-user</module>
+		<module>huddl-core</module>
         </modules>
 
     <properties>

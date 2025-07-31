@@ -16,7 +16,7 @@ import work.huddl.huddlcore.model.enums.TokenType;
 public class CommandParser {
 
 	private int current = 0; // current token
-	private ICommand actionCommand;
+	private final ICommand actionCommand;
 	private List<Token> tokens;
 
 	public CommandParser(final ICommand actionCommand) {
@@ -35,6 +35,7 @@ public class CommandParser {
 		switch (actionToken.getValue()) {
 			case "log" -> parseLogAction();
 		}
+		return null;
 	}
 
 	private ICommand parseLogAction() {
@@ -67,7 +68,7 @@ public class CommandParser {
 	}
 
 	// check if current token matches expected value
-	private boolean check(TokenType type){
+	private boolean check(TokenType type) {
 		return tokens.get(current).getTokenType() == type;
 	}
 

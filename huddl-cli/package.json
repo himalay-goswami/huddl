@@ -1,0 +1,38 @@
+{
+  "name": "huddl-cli",
+  "version": "0.1.0",
+  "description": "CLI for interacting with the Huddl server API.",
+  "main": "dist/index.js",
+  "bin": {
+    "huddl": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "pkg": "pkg . --out-path build"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "commander": "^11.0.0",
+    "node-pty": "^1.0.0",
+    "terminal-kit": "^3.1.2"
+  },
+  "devDependencies": {
+    "@types/node": "^24.1.0",
+    "@types/terminal-kit": "^2.5.7",
+    "typescript": "^5.0.0"
+  },
+  "pkg": {
+    "scripts": "dist/**/*.js",
+    "assets": [
+      "dist/**/*"
+    ],
+    "targets": [
+      "node18-macos-x64",
+      "node18-linux-x64",
+      "node18-win-x64"
+    ]
+  }
+}

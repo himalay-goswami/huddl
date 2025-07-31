@@ -5,7 +5,6 @@ import LoginPage from "./pages/Login"
 import Dashboard from "./pages/Dashboard"
 import Timeline from "./pages/Timeline"
 import CliDocs from './pages/CliDocs'
-import UniversalTimeline from './components/UniversalTimeline'
 
 function App() {
 
@@ -18,7 +17,6 @@ function App() {
 					<Route path="/dashboard" element={<Dashboard />} />
 					<Route path="/timeline" element={<Timeline />} />
 					<Route path="/cli-docs" element={<CliDocs />} />
-					<Route path="/universal-timeline" element={<UniversalTimeline universalRepoLabel={'hello'} days={[]} />} />
 				</Routes>
 			</div>
 		</BrowserRouter>
